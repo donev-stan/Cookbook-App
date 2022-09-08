@@ -11,7 +11,12 @@ export class RecipeListComponent implements OnInit {
     new Recipe(
       'Test Recipe',
       'This is a test',
-      'https://unsplash.com/photos/vuDXJ60mJOA'
+      'https://static01.nyt.com/images/2021/08/18/dining/12SAFFRONREX-Saffron-Salmon-Kebabs-copy/06SAFFRONREX-Saffron-Salmon-Kebabs-articleLarge.jpg?quality=75&auto=webp&disable=upscale'
+    ),
+    new Recipe(
+      'Test Recipe',
+      'This is a test',
+      'https://static01.nyt.com/images/2021/08/18/dining/12SAFFRONREX-Saffron-Salmon-Kebabs-copy/06SAFFRONREX-Saffron-Salmon-Kebabs-articleLarge.jpg?quality=75&auto=webp&disable=upscale'
     ),
   ];
 
