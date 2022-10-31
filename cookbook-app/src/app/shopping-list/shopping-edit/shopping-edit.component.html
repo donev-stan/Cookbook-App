@@ -36,7 +36,7 @@
             [disabled]="!f.valid"
             style="margin: 5px"
           >
-            Add
+            {{ editMode ? "Update" : "Save" }}
           </button>
           <button class="btn btn-danger" type="button" style="margin: 5px">
             Delete
