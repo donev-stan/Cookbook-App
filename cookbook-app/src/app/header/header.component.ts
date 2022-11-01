@@ -14,6 +14,10 @@ export class HeaderComponent {
     this.dataStorageService.storeRecipes();
   }
 
+  onFetchData() {
+    this.dataStorageService.fetchRecipes();
+  }
+
   onSelect(page: string): void {
     this.pageSelected.emit(page);
   }
