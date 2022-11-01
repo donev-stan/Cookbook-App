@@ -1,5 +1,3 @@
-# Cookbook-App
-
 ## Topics Covered: 
 - Debugging
 - Components & Databinding
