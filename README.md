@@ -1,10 +1,22 @@
 # Cookbook-App
 
-#### Section 3 - The Basics
-#### Section 6 - Components & Data Binding
-#### Section 8 - Directives
-#### Section 10 - Services & Dependency Injection
-#### Section 12 - Routing
-#### Section 14 - Observables
-#### Section 16 - Forms
-#### Section 19 - Http
+## Topics Covered: 
+- Debugging
+- Components & Databinding
+- Directives
+- Services & Dependency Injection
+- Routing
+- Observables
+- Forms
+- Pipes
+- Http
+- Authentication & Route Protection
+- Dynamic Components
+- Modules & Optimization
+- Deploying Angular Apps
+- Standalone Components
+- NgRx
+- Angular Universal
+- Angular Animations
+- Offline Capabilities with Service Workers
+- Unit Testing
