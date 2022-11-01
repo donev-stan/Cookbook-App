@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map } from 'rxjs';
+import { map, tap } from 'rxjs';
 import { Recipe } from '../recipes/recipe.model';
 import { RecipeService } from '../recipes/recipe.service';
 
@@ -23,7 +23,7 @@ export class DataStorageService {
   }
 
   fetchRecipes() {
-    this.http
+    return this.http
       .get<Recipe[]>(
         `https://cookbook---angular-default-rtdb.europe-west1.firebasedatabase.app/recipes.json`
       )
@@ -35,12 +35,8 @@ export class DataStorageService {
               ingredients: recipe.ingredients ? recipe.ingredients : [],
             };
           });
-        })
-      )
-      .subscribe({
-        next: (recipes) => {
-          this.recipeService.setRecipes(recipes);
-        },
-      });
+        }),
+        tap((recipes) => this.recipeService.setRecipes(recipes))
+      );
   }
 }
