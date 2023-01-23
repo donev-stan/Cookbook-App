@@ -29,45 +29,43 @@ export class DataStorageService {
 
   fetchRecipes() {
     // this.authService.user.subscribe().unsubscribe(); --- take would take 1 emitted value and then unsubscribe
-    return this.authService.user.pipe(
-      take(1),
-      exhaustMap((user) => {
-        return this.http.get<Recipe[]>(
-          `https://cookbook---angular-default-rtdb.europe-west1.firebasedatabase.app/recipes.json`,
-          {
-            params: new HttpParams().set('auth', user.token),
-          }
-        );
-      }),
-      map((recipes) => {
-        return recipes.map((recipe) => {
-          return {
-            ...recipe,
-            ingredients: recipe.ingredients ? recipe.ingredients : [],
-          };
-        });
-      }),
-      tap((recipes) => this.recipeService.setRecipes(recipes))
-    );
+    // return this.authService.user.pipe(
+    //   take(1),
+    //   exhaustMap((user) => {
+    //     return this.http.get<Recipe[]>(
+    //       `https://cookbook---angular-default-rtdb.europe-west1.firebasedatabase.app/recipes.json`,
+    //       {
+    //         params: new HttpParams().set('auth', user.token),
+    //       }
+    //     );
+    //   }),
+    //   map((recipes) => {
+    //     return recipes.map((recipe) => {
+    //       return {
+    //         ...recipe,
+    //         ingredients: recipe.ingredients ? recipe.ingredients : [],
+    //       };
+    //     });
+    //   }),
+    //   tap((recipes) => this.recipeService.setRecipes(recipes))
+    // );
 
     // exhaustMap ->
     // We get the data from the first observable (user)
     // After that we pass a new observable which will replace the previous one
 
-    // return this.http
-    //   .get<Recipe[]>(
-    //     `https://cookbook---angular-default-rtdb.europe-west1.firebasedatabase.app/recipes.json`
-    //   )
-    //   .pipe(
-    //     map((recipes) => {
-    //       return recipes.map((recipe) => {
-    //         return {
-    //           ...recipe,
-    //           ingredients: recipe.ingredients ? recipe.ingredients : [],
-    //         };
-    //       });
-    //     }),
-    //     tap((recipes) => this.recipeService.setRecipes(recipes))
-    //   );
+    return this.http
+      .get<Recipe[]>(
+        `https://cookbook---angular-default-rtdb.europe-west1.firebasedatabase.app/recipes.json`
+      )
+      .pipe(
+        map((recipes) => {
+          return recipes.map((recipe) => ({
+            ...recipe,
+            ingredients: recipe.ingredients ? recipe.ingredients : [],
+          }));
+        }),
+        tap((recipes) => this.recipeService.setRecipes(recipes))
+      );
   }
 }
